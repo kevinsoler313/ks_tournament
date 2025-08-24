@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+    <h2>Crear nuevo torneo</h2>
+    <form action="/crear" method="post">
+        <label>Nombre del Torneo:</label>
+        <input type="text" name="nombre" required><br>
+
+        <label>Deporte:</label>
+        <select name="deporte" required>
+            <option value="futbol">Fútbol</option>
+            <option value="baloncesto">Baloncesto</option>
+            <option value="tenis">Tenis</option>
+            <option value="otro">Otro</option>
+        </select><br>
+
+        <label>Tipo de torneo:</label>
+        <select name="tipo" required>
+            <option value="liga">Liga (todos contra todos)</option>
+            <option value="eliminacion">Eliminación directa</option>
+        </select><br>
+
+        <button type="submit">Crear</button>
+    </form>
+{% endblock %}

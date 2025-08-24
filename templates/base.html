@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 16px;
+        text-align: center;
+    }
+
+    th, td {
+        padding: 10px;
+        border: 1px solid #ccc;
+    }
+
+    th {
+        background-color: #2c3e50;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #e0f7fa;
+    }
+
+    h2, h3 {
+        text-align: center;
+        color: #2c3e50;
+    }
+
+    .resultado-form input[type="number"] {
+        width: 60px;
+        padding: 5px;
+        text-align: center;
+    }
+
+    .boton-actualizar {
+        background-color: #2980b9;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        margin: 20px auto;
+        display: block;
+    }
+
+    .boton-actualizar:hover {
+        background-color: #000000;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <title>KS TOURNAMENT</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>KS TOURNAMENT</h1>
+        <nav class="nav-bar">
+            <a href="/" class="fancy-btn"><span>Inicio</span></a>
+            <a href="/crear" class="fancy-btn"><span>Crear Torneo</span></a>
+        </nav>
+
+    </header>
+
+    <main>
+        {% block contenido %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 KS Tournament</p>
+    </footer>
+</body>
+</html>

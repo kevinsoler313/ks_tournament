@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+    <h2>Torneo creado exitosamente</h2>
+    <p><strong>Nombre:</strong> {{ nombre }}</p>
+    <p><strong>Deporte:</strong> {{ deporte|capitalize }}</p>
+    <p><strong>Número de equipos:</strong> {{ equipos }}</p>
+    <p><strong>Tipo:</strong> {{ tipo|capitalize }}</p>
+
+    <!-- Más adelante: botón para agregar equipos o generar el fixture -->
+    <a href="/"><button>Volver al inicio</button></a>
+{% endblock %}

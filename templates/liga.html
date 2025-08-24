@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+<div class="container" style="color: white; padding: 20px;">
+  <h1 class="titulo-torneo">{{ nombre }}</h1>
+
+  {% if tabla %}
+  <div class="tabla-posiciones" style="overflow-x: auto; margin-bottom: 40px;">
+    <h3 style="text-align: center; margin-bottom: 10px;">Tabla de Posiciones</h3>
+    <table style="width: 100%; border-collapse: collapse; background-color: #1e1f2f; color: white;">
+      <thead>
+        <tr style="background-color: #444764; color: #00c853;">
+          <th>#</th>
+          <th>Equipo</th>
+          <th>PTS</th>
+          <th>PJ</th>
+          <th>GF</th>
+          <th>GC</th>
+          <th>DG</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for equipo, datos in tabla.items() %}
+        <tr style="text-align: center;">
+          <td>{{ loop.index }}</td>
+          <td style="font-weight: bold;" class="uppercase">{{ equipo }}</td>
+          <td>{{ datos.puntos }}</td>
+          <td>{{ datos.jugados }}</td>
+          <td>{{ datos.gf }}</td>
+          <td>{{ datos.gc }}</td>
+          <td>{{ datos.dg }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endif %}
+
+  <hr style="border-color: #444; margin: 40px 0;">
+
+  <div class="resultados">
+    <h3 style="text-align: center; margin-bottom: 20px;">Resultados de Partidos</h3>
+
+    <form action="/actualizar_tabla_en_vista" method="post" style="max-width: 800px; margin: 0 auto;">
+      <input type="hidden" name="nombre" value="{{ nombre }}">
+      {% for equipo in equipos %}
+        <input type="hidden" name="equipo" value="{{ equipo }}">
+      {% endfor %}
+
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr style="background-color: #2c2f45;">
+            <th>Equipo A</th>
+            <th>Goles A</th>
+            <th>Goles B</th>
+            <th>Equipo B</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for eq1, eq2 in partidos %}
+          <tr style="text-align: center;">
+            <td class="uppercase">{{ eq1 }}</td>
+            <td><input type="number" name="goles_{{ loop.index0 }}_1" min="0"
+                class="input-marcador"
+                value="{{ resultados[loop.index0][0] if resultados is defined }}" placeholder="-"></td>
+
+            <td><input type="number" name="goles_{{ loop.index0 }}_2" min="0"
+                class="input-marcador"
+                value="{{ resultados[loop.index0][1] if resultados is defined }}" placeholder="-"></td>
+            <td class="uppercase">{{ eq2 }}</td>
+            <input type="hidden" name="partido_{{ loop.index0 }}" value="{{ eq1 }}::{{ eq2 }}">
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <div class="flex-center">
+        <button type="submit" style="margin-top: 30px; padding: 12px 25px; background-color: #00c853; border: none; border-radius: 6px; color: white; font-weight: bold; font-size: 1rem; cursor: pointer;">
+            Actualizar tabla
+        </button>
+        </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
