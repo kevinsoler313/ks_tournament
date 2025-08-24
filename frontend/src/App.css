@@ -18,6 +18,7 @@ body {
   align-items: center;
   height: 100vh;
   background-color: #001433;
+  padding-top: 120px;
 }
 
 .title {
@@ -27,6 +28,7 @@ body {
   color: #ffffff;
   position: absolute;
   top: 1px; /* Ajusta este valor para subir o bajar el título */
+  margin: 20px;
 }
 
 input[type="number"] {
@@ -39,6 +41,7 @@ input[type="number"] {
 }
 
 input[type="text"] {
+  text-transform: uppercase;
   margin: 20px;
   background-color: #ffffff;
   border: 1px solid #ccc;
@@ -111,4 +114,59 @@ select:focus {
   outline: none;
   border-color: #007bff; /* Color de enfoque */
   box-shadow: 0 0 0 10px #4dff00;
+}
+
+.tabla-posiciones {
+  width: 100%;       /* ocupa todo el contenedor */
+  max-width: 1200px; /* ancho máximo */
+  font-size: 1.1rem; /* aumenta tamaño de texto */
+  border-collapse: collapse;
+  margin-top: 80px;
+}
+
+.tabla-posiciones th, 
+.tabla-posiciones td {
+  padding: 12px 15px; /* aumenta el padding para celdas más grandes */
+  text-align: center;
+}
+
+.tabla-posiciones thead tr { 
+  background-color: #444764;
+  color: #00c853;
+}
+
+/* Tabla de resultados (misma base que tabla-posiciones) */
+.tabla-resultados {
+  width: 90%;
+  margin: 30px auto;
+  overflow-x: auto;
+  background-color: #1e1f2f; /* igual que tabla-posiciones */
+  color: white;
+  border-radius: 8px;
+}
+
+.tabla-resultados table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla-resultados th, .tabla-resultados td {
+  padding: 10px;
+  text-align: center;
+}
+
+.tabla-resultados th {
+  background-color: #444764;
+  color: #00c853;
+}
+
+.input-marcador {
+  width: 60px;
+  text-align: center;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.uppercase {
+  text-transform: uppercase; /* nombres de equipos en mayúsculas */
 }

@@ -7,6 +7,7 @@ import CrearFutbol from "./pages/CrearFutbol";
 import CrearTenis from "./pages/CrearTenis";
 import CrearBasketbol from "./pages/CrearBasketbol";
 import ConfigurarEquiposFutbol from "./pages/ConfigurarEquiposFutbol";
+import LineaTorneoFutbol from "./pages/LineaTorneoFutbol";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -17,6 +18,7 @@ root.render(
     <Route path="/crear/tenis" element={<CrearTenis />} />
     <Route path="/crear/basketbol" element={<CrearBasketbol />} />
     <Route path="/configurar-equipos-futbol" element={<ConfigurarEquiposFutbol />} />
+    <Route path="/linea-torneo-futbol" element={<LineaTorneoFutbol />} />
   </Routes>
   </BrowserRouter>
 );

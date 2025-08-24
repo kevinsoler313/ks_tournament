@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import "../App.css";
+import { useNavigate } from "react-router-dom";
+
 
 function ConfigurarEquiposFutbol() {
   const location = useLocation();
@@ -17,10 +19,15 @@ function ConfigurarEquiposFutbol() {
     setNombresEquipos(nuevosNombres);
   };
 
+  const handleSiguiente = () => {
+    navigate("/linea-torneo-futbol", { state: { equipos: nombresEquipos } });
+  };
+
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Equipos configurados:", nombresEquipos);
-    // Aquí podrías redirigir a otra página o guardar los datos
+    navigate("/linea-torneo-futbol", { state: { equipos: nombresEquipos } });
   };
 
   return (
