@@ -98,7 +98,14 @@ const handleCambioGoles = (index, equipo, valor) => {
               </thead>
               <tbody>
                 {Object.entries(tabla)
-                    .sort(([, a], [, b]) => b.puntos - a.puntos) // orden descendente por puntos
+                    .sort((a, b) => {
+                        // Orden descendente por puntos
+                        if (b[1].puntos !== a[1].puntos) {
+                        return b[1].puntos - a[1].puntos;
+                        }
+                        // Si hay empate en puntos, orden descendente por diferencia de goles
+                        return b[1].dg - a[1].dg;
+                    })
                     .map(([equipo, datos], idx) => (
                     <tr key={idx} style={{ textAlign: "center" }}>
                         <td>{idx + 1}</td>
